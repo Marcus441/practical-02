@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
     // Static list of users, acting as a database
     private static ArrayList<User> users = new ArrayList<>();
@@ -74,7 +77,8 @@ public class Main {
         String password = scanner.nextLine();
         User user = authService.logIn(username, password);
         System.out.println("Welcome, " + user.getUsername() + "!");
-        // TODO Later: Add the to-do list operations
+        ToDoList toDoList = new ToDoList(user);
+        toDoList.run();
     }
 
     /**
@@ -87,7 +91,7 @@ public class Main {
         System.out.print("Enter your password: ");
         String password = scanner.nextLine();
         User user = authService.signUp(username, password);
-        // TODO Later: Shows a message based on the result
+        System.out.println("User created successfully!");
     }
 
     /**
